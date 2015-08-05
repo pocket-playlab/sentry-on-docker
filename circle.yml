@@ -24,5 +24,5 @@ deployment:
     commands:
       - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" dockercfg.template > ~/.dockercfg
       - docker push pocketplaylab/sentry-on-heroku:$CIRCLE_BRANCH
-      - ./bin/deploy-coreos staging :
+      - ./bin/deploy-coreos :
           timeout: 600
