@@ -1,0 +1,28 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - mkdir -p ~/docker
+    - if [[ -e ~/docker/sentry.tar ]]; then docker load -i ~/docker/sentry.tar; fi
+    - docker build -t pocketplaylab/sentry-on-heroku:$CIRCLE_BRANCH .
+    - docker save "pocketplaylab/sentry-on-heroku:$CIRCLE_BRANCH" > ~/docker/sentry.tar
+
+database:
+  override:
+    - echo 'No database for testing'
+
+test:
+  override:
+    - echo 'No test'
+deployment:
+  production:
+    branch: docker
+    commands:
+      - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" dockercfg.template > ~/.dockercfg
+      - docker push pocketplaylab/sentry-on-heroku:$CIRCLE_BRANCH
+#      - ./bin/deploy-coreos staging :
+#          timeout: 600
