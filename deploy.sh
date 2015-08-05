@@ -5,7 +5,7 @@ set -e
 pull() {
   local server=$1
   echo "Pulling repository on $server"
-  ssh core@$server "docker pull pocketplaylab/sentry-on-heroku:docker"
+  ssh core@$server "docker pull pocketplaylab/sentry-on-heroku:latest"
 }
 
 # Need to pull on all servers
