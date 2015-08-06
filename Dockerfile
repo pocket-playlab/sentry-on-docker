@@ -14,6 +14,6 @@ RUN pip install -r requirements.txt
 RUN gem install etcd-env
 COPY . /usr/src/app
 ENV PORT 9000
-EXPOSE ${PORT}
+EXPOSE ${PORT} 
 ENTRYPOINT [ "etcd-env", "/sentry" ]
 CMD ["newrelic-admin run-program sentry --config=sentry.conf.py start"]
