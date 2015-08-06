@@ -12,4 +12,4 @@ Sentry on Docker
 Quick setup
 -------------
 
-TO DO
+..TO DO
