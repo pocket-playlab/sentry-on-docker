@@ -1,0 +1,28 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - mkdir -p ~/docker
+    - if [[ -e ~/docker/sentry.tar ]]; then docker load -i ~/docker/sentry.tar; fi
+    - docker build -t pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest .
+    - docker save "pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest" > ~/docker/sentry.tar
+
+database:
+  override:
+    - echo 'No database for testing'
+
+test:
+  override:
+    - echo 'No test'
+deployment:
+  production:
+    branch: docker
+    commands:
+      - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" dockercfg.template > ~/.dockercfg
+      - docker push pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest
+      - ./deploy.sh :
+          timeout: 600
