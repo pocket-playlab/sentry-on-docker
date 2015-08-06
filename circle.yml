@@ -20,7 +20,7 @@ test:
     - echo 'No test'
 deployment:
   production:
-    branch: docker
+    branch: master
     commands:
       - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" dockercfg.template > ~/.dockercfg
       - docker push pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest
