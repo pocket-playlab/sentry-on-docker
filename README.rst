@@ -1,4 +1,4 @@
-Sentry on Heroku
+Sentry on Docker
 ================
 
     Sentry_ is a realtime event logging and aggregation platform.  At its core
@@ -12,4 +12,5 @@ Sentry on Heroku
 Quick setup
 -------------
 
-TO DO
+..TO DO
+
