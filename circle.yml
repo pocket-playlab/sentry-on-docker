@@ -25,7 +25,7 @@ deployment:
     commands:
       - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" dockercfg.template > ~/.dockercfg
       - docker push pocketplaylab/$CIRCLE_PROJECT_REPONAME:development
-      - ./deploy.sh :
+      - ./deploy.sh staging:
           timeout: 600
 
 #deployment:
