@@ -37,9 +37,9 @@ python-openid
 pytz
 raven
 redis
-sentry
-sentry-flowdock
-sentry-github
+sentry==6.4.4
+sentry-flowdock==0.1.1
+sentry-github==0.1.2
 setproctitle
 simplejson
 six
