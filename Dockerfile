@@ -1,9 +1,9 @@
-FROM python:3.4
+FROM python:2.7
 
 ENV LANG C.UTF-8
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    ruby python3-setuptools \
+    ruby python-setuptools wget apt-utils \
 && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/*
 
