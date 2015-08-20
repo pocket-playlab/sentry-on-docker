@@ -3,7 +3,7 @@ FROM python:3.4
 ENV LANG C.UTF-8
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
-    ruby python-setuptools \
+    ruby python3-setuptools \
 && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/*
 
