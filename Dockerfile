@@ -1,5 +1,6 @@
-FROM python:2.7
+FROM python:3.4
 
+ENV LANG C.UTF-8
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     ruby \
