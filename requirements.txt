@@ -24,7 +24,7 @@ gunicorn>=19.2.1,<20.0.0
 httpagentparser
 httplib2
 kombu
-logan>=0.7.1,<0.8.0
+logan==0.5.10
 newrelic
 nydus
 oauth2
@@ -37,7 +37,7 @@ python-openid
 pytz
 raven>=5.3.0
 redis>=2.7.0,<2.11.0
-sentry
+sentry==6.4.4
 sentry-flowdock
 sentry-github
 setproctitle>=1.1.7,<1.2.0
