@@ -8,8 +8,8 @@ dependencies:
   override:
     - mkdir -p ~/docker
     - if [[ -e ~/docker/sentry.tar ]]; then docker load -i ~/docker/sentry.tar; fi
-    - docker build -t pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest .
-    - docker save "pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest" > ~/docker/sentry.tar
+    - docker build -t pocketplaylab/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH .
+    - docker save "pocketplaylab/$CIRCLE_PROJECT_REPONAME:$CIRCLE_BRANCH" > ~/docker/sentry.tar
 
 database:
   override:
@@ -18,11 +18,21 @@ database:
 test:
   override:
     - echo 'No test'
+
 deployment:
-  production:
-    branch: docker
+  staging:
+    branch: development
     commands:
       - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" dockercfg.template > ~/.dockercfg
-      - docker push pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest
+      - docker push pocketplaylab/$CIRCLE_PROJECT_REPONAME:development
       - ./deploy.sh :
           timeout: 600
+
+#deployment:
+#  production:
+#    branch: master
+#    commands:
+#      - sed "s/<EMAIL>/$DOCKER_EMAIL/;s/<AUTH>/$DOCKER_AUTH/" dockercfg.template > ~/.dockercfg
+#      - docker push pocketplaylab/$CIRCLE_PROJECT_REPONAME:latest
+#      - ./deploy.sh :
+#          timeout: 600
