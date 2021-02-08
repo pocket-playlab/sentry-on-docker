@@ -22,7 +22,7 @@ gevent==1.0.2
 greenlet==0.4.2
 gunicorn==19.5.0
 httpagentparser==1.2.2
-httplib2==0.9
+httplib2==0.19.0
 kombu==2.5.16
 logan==0.5.10
 newrelic==2.24.0.21
