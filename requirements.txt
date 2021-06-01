@@ -43,6 +43,6 @@ sentry-github==0.1.2
 setproctitle==1.1.8
 simplejson==3.3.3
 six==1.7.3
-urllib3==1.7.1
+urllib3==1.26.5
 wsgiref==0.1.2
 sentry-hipchat
